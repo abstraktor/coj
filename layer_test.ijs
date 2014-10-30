@@ -1,6 +1,7 @@
 
 before_each =: 3 : 0
-  cocurrent <'base'
+  cocurrent <'base' 
+  clear ''
   load '/users/reflektor/j64-802-user/projects/coj/utils.ijs'
   load '/users/reflektor/j64-802-user/projects/coj/layer.ijs'
 
@@ -40,7 +41,7 @@ test_enable_layer =: 3 : 0
    assert 2 = #inspect__C1 ''
 
   NB. describe the writeonly layer
-  'Collection' layer 'writeonly'
+  'Collection' layer 'Writeonly'
     add =: 3 : '# items'
     remove =: 3 : '# items'
     destroy =: 3 : '0'
@@ -48,17 +49,17 @@ test_enable_layer =: 3 : 0
   NB. tesing a layered collection
   cocurrent 'base'
   
-  disable_layer 'writeonly'
+  disable_layer 'Writeonly'
   assert 2 = #inspect__C1 ''
   add__C1 'bar'
   assert 3 = #inspect__C1 '' NB. modification
   
-  enable_layer 'writeonly'
+  enable_layer 'Writeonly'
   add__C1 'bar'
   assert 3 = #inspect__C1 '' NB. no modification
 )
 
-test_others =: 3 : 0
+xtest_others =: 3 : 0
 NB. how does it work?
    NB. there is three locales involved:
    NB. - Collection contains non-layered members

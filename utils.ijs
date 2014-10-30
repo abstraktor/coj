@@ -16,4 +16,16 @@ deleteOwn =: 4 : 0
   end.
 )
 
-addOne =: 3 : '1+y'
+copy_methods =: 4 : 0
+  methods =. nl__x ''
+  for_method. methods do.
+    oldName =. (>method),'_',(>x),'_'
+    newName =. (>method),'_',(>y),'_'
+    cocurrent x
+    sentence =. newName,' =: ',oldName
+    if. 0 < 4!:0 (<oldName) do.
+      sentence =. sentence,' f.'
+    end.
+    ". sentence
+  end.
+)

@@ -13,10 +13,12 @@ disable_layer =: 3 : 0
 )
 
 layer =: 4 : 0
-   NB. move all methods to Collection-z
-   add_CollectionZ_ =: add_Collection_ f.
-   remove_CollectionZ_ =: remove_Collection_ f.
-   destroy_CollectionZ_ =: destroy_Collection_ f.
+   klass =. <x
+   layer =. <y
+   newLocale =. <x,y
+
+   NB. copy all methods to Collection-z
+   klass copy_methods (< x,'Z')
    
    'Collection' deleteOwn 'add'
    'Collection' deleteOwn 'remove'
