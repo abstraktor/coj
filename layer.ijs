@@ -1,7 +1,6 @@
 cocurrent <'layer'
 clear ''
 
-
 enable_layer =: 3 : 0
    ('Collection';'CollectionWriteonly';'CollectionZ';'z') copath C1
    ('CollectionWriteonly';'CollectionZ';'z') copath 'Collection'
@@ -19,16 +18,13 @@ layer =: 4 : 0
 
    NB. copy all methods to Collection-z
    klass copy_methods (< x,'Z')
-   
-   'Collection' deleteOwn 'add'
-   'Collection' deleteOwn 'remove'
-   'Collection' deleteOwn 'destroy'
-   
+   clear >klass
+
    NB. create layer
-   18!:4 <'CollectionWriteonly'
-   disable_layer_layer_ 'CollectionWriteonly'
+   18!:4 newLocale
+   disable_layer_layer_ (>newLocale)
    NB. make layer current
-   18!:4 <'CollectionWriteonly'
+   18!:4 newLocale
 )
 
 with_layer =: 3 : 0

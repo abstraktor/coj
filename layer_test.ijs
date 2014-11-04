@@ -29,7 +29,7 @@ test_layer =: 3 : 0
   assert (>@coname '') -: 'base'
 
   NB. when
-  'Collection' layer 'writeonly'
+  'Collection' layer 'Writeonly'
   
   NB. then
   assert 'CollectionWriteonly' -: (>@coname '')
@@ -79,14 +79,14 @@ NB. how does it work?
    
    NB. enable the 'writeonly' layer, i.e.
    NB. pluck the CollectionWriteonly locale into the lookup path
-   enable_layer 'writeonly'
+   enable_layer 'Writeonly'
 
    NB. show add method from Collection
    add_Collection_
 
    NB. disable the 'writeonly' layer, i.e.
    NB. remove the CollectionWriteonly locale from lookup path
-   disable_layer 'writeonly'
+   disable_layer 'Writeonly'
 
    NB. show add method from Collection
    add_Collection_
