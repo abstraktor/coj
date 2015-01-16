@@ -36,6 +36,12 @@ test_layer =: 3 : 0
   assert ('CollectionZ';,'z')  -: (copath 'Collection')
 )
 
+test_layer_empty_y =: 3 : 0
+  cocurrent <'base'
+  'Collection' layer ''
+  assert 'Collection' -: (>@coname '')
+)
+
 test_enable_layer =: 3 : 0
   cocurrent <'base'
    assert 2 = #inspect__C1 ''
