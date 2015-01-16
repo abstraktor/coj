@@ -2,8 +2,8 @@
 before_each =: 3 : 0
   cocurrent <'base' 
   clear ''
-  load '/users/reflektor/j64-802-user/projects/coj/utils.ijs'
-  load '/users/reflektor/j64-802-user/projects/coj/layer.ijs'
+  load jpath '~user/projects/coj/utils.ijs'
+  load jpath '~user/projects/coj/layer.ijs'
 
   NB. define a Collection
   coclass 'Collection'
