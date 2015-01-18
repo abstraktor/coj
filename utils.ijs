@@ -29,3 +29,7 @@ copy_methods =: 4 : 0
     ". sentence
   end.
 )
+
+NB. replaces ). in the given noun by )
+replaceFakeParen =: ] #~ (1&,@:-.@:(2 ').'&-: \ ]))
+

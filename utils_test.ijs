@@ -1,5 +1,5 @@
 before_all=: 3 : 0
-  require '/users/reflektor/j64-802-user/projects/coj/utils.ijs'
+  load jpath '~user/projects/coj/utils.ijs'
 )
 
 test_copy_methods =: 3 : 0
@@ -25,4 +25,35 @@ test_copy_methods =: 3 : 0
   assert 'LocaleA' -: printA_LocaleB_ ''
   NB. then printB is still present there
   assert 'LocaleB' -: printB_LocaleB_ ''
+)
+
+
+test_replaceFakeParen =: 3 : 0
+  assert 'abcd)efg' -: replaceFakeParen_layer_ 'abcd).efg'
+)
+
+fp_multiRow_input =: noun define
+multiple
+rows
+  ).
+no new line ).
+no dot )
+and no paren .
+done
+)
+
+fp_multiRow_output =: noun define
+multiple
+rows
+)
+fp_multiRow_output =: fp_multiRow_output , '  )', (10{a.),'no new line )', noun define
+
+no dot )
+and no paren .
+done
+)
+
+
+test_replaceFakeParenMultiRow =: 3 : 0
+  assert fp_multiRow_output -: replaceFakeParen_layer_ fp_multiRow_input
 )
