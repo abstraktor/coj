@@ -1,4 +1,7 @@
+require '~user/projects/coj/utils.ijs'
+
 cocurrent <'layer'
+coinsert 'utils'
 clear ''
 
 enable_layer =: 3 : 0
@@ -15,8 +18,9 @@ layer =: 4 : 0
    klass =. <x
    layer =. <y
    newLocale =. <x,y
+   oldLocale =. coname ''
 
-   NB. copy all methods to Collection-z
+   NB. copy all methods to CollectionZ
    klass copy_methods (< x,'Z')
    clear >klass
 
@@ -25,6 +29,8 @@ layer =: 4 : 0
    disable_layer_layer_ (>newLocale)
    NB. make layer current
    18!:4 newLocale
+
+   NB. 
 )
 
 with_layer =: 3 : 0

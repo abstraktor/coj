@@ -19,7 +19,7 @@ test_copy_methods =: 3 : 0
   assert 'LocaleB' -: printB_LocaleB_ ''
 
   NB. when
-  (<'LocaleA') copy_methods_layer_ (<'LocaleB')
+  (<'LocaleA') copy_methods_utils_ (<'LocaleB')
 
   NB. then it appeared in B
   assert 'LocaleA' -: printA_LocaleB_ ''
@@ -29,7 +29,11 @@ test_copy_methods =: 3 : 0
 
 
 test_replaceFakeParen =: 3 : 0
-  assert 'abcd)efg' -: replaceFakeParen_layer_ 'abcd).efg'
+  assert 'abcd)efg' -: replaceFakeParen_utils_ 'abcd).efg'
+)
+
+test_replaceFakeParenOfNoString =: 3 : 0
+  assert '' -: replaceFakeParen_utils_ ''
 )
 
 fp_multiRow_input =: noun define
@@ -55,5 +59,5 @@ done
 
 
 test_replaceFakeParenMultiRow =: 3 : 0
-  assert fp_multiRow_output -: replaceFakeParen_layer_ fp_multiRow_input
+  assert fp_multiRow_output -: replaceFakeParen_utils_ fp_multiRow_input
 )

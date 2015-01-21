@@ -11,44 +11,40 @@ Note 'Example commands to run'
 MinesweeperCon_z_=: conew&'mineswpcon'
 
 
+load jpath '~user/projects/coj/layer2.ijs'
 require 'games/minesweeper/minefield'
 coclass 'mineswpcon'
 coinsert 'mineswp'
+coinsert 'layer2'
 
-
-AddonPath=. jpath '~addons/games/minesweeper/'
-NB.TilesG26=: ''                                                       NB. dummy variable
-TilesG26=: ,((2 2 $ #) <;._3 ]) readimg AddonPath,'tiles26.png'  NB. can uncomment on J6
-TilesA=: ' 12345678**.?'
-TextDisplay=: 0                  NB. set to zero to display minefield using viewmat
-
-NB. . . .
-
-mscon_update=: 3 : 0
-  'isend msg'=. eval ''
-  IsEnd=: isend
-  smoutput msg
-  tiles=. TextDisplay{:: TilesG26;TilesA
-  display tiles showField isend
-  if. isend do.
-    msg=. ('K'={.msg) {:: 'won';'lost'
-    smoutput 'You ',msg,'! Try again?'
-    destroy ''
-  end.
-  empty''
-)
-
-NB. . . .
-
-display=: 3 : 0
-  if. TextDisplay do.
-    smoutput@< y
-  else.
+NB. mit cop
+'mineswpcon' lwhen 'J6'
+  NB. use viewmat
+  AddonPath=. jpath '~addons/games/minesweeper/'
+  Tiles =: ,((2 2 $ #) <;._3 ]) readimg AddonPath,'tiles26.png'
+  display =: monad define
     closeall_jviewmat_ :: ] ''
     ([: viewrgb@; ,.&.>/"1) y
-  end.
-  empty''
+    NB. proceed…
+    display_mineswpconLayerZ_ ''
+  ).
 )
+
+'mineswpcon' lwhen 'NotJ6'
+  Tiles =: ' 12345678**.?'
+  display =: monad define
+    smoutput@< y
+    display_mineswpconLayerZ_ ''
+  ).
+)
+
+'mineswpcon' lwhen 'Z'
+  display=: monad define
+    empty''
+  ).
+)
+
+'mineswpcon' lenable 'NotJ6'
 
 NB. Methods
 NB. =========================================================
@@ -69,8 +65,7 @@ mscon_update=: 3 : 0
   'isend msg'=. eval ''
   IsEnd=: isend
   smoutput msg
-  tiles=. TextDisplay{:: TilesG26;TilesA
-  display tiles showField isend
+  display Tiles showField isend
   if. isend do.
     msg=. ('K'={.msg) {:: 'won';'lost'
     smoutput 'You ',msg,'! Try again?'
@@ -82,17 +77,6 @@ mscon_update=: 3 : 0
 
 clear=: mscon_update@clearTiles@|.
 mark=: mscon_update@markTiles@|.
-
-
-display=: 3 : 0
-  if. TextDisplay do.
-    smoutput@< y
-  else.
-    closeall_jviewmat_ :: ] ''
-    ([: viewrgb@; ,.&.>/"1) y
-  end.
-  empty''
-)
 
 
 NB. Text Nouns
@@ -125,4 +109,5 @@ How to play:
 NB. Auto-run UI
 NB. =========================================================
 cocurrent 'base'
+
 fld=: MinesweeperCon ''

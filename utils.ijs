@@ -1,4 +1,4 @@
-cocurrent <'layer'
+cocurrent <'utils'
 
 ownProps =: 3 : ' nl__loc '''' [ loc =. <y'
 
@@ -31,5 +31,5 @@ copy_methods =: 4 : 0
 )
 
 NB. replaces ). in the given noun by )
-replaceFakeParen =: ] #~ (1&,@:-.@:(2 ').'&-: \ ]))
+replaceFakeParen =: ] #~ (1&,@:-.@:(2 ').'&-: \ ]))`(]&'')@.((,0) -: $)
 

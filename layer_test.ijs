@@ -39,6 +39,7 @@ test_layer =: 3 : 0
 test_layer_empty_y =: 3 : 0
   cocurrent <'base'
   'Collection' layer ''
+  )
   assert 'Collection' -: (>@coname '')
 )
 
@@ -51,9 +52,7 @@ test_enable_layer =: 3 : 0
     add =: 3 : '# items'
     remove =: 3 : '# items'
     destroy =: 3 : '0'
-
-  NB. tesing a layered collection
-  cocurrent 'base'
+  )
   
   disable_layer 'Writeonly'
   assert 2 = #inspect__C1 ''
