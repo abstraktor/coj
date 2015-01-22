@@ -9,30 +9,26 @@ before_each =: 3 : 0
   NB. suppress output
 NB.  smoutput_mineswpcon_ =: 3 : '0 0$y'
 
-  cocurrent <'base' 
-  clear ''
   coinsert <'layer2'
 )
 
 test_J6_Tiles =: 3 : 0
   NB. given
-  coinsert <'layer2'
 
   NB. when
   'mineswpcon' lenable 'J6'
 
   NB. then
-  assert (#Tiles) -: 2
+  assert (#Tiles_mineswpcon_) -: 2
 )
 
 test_NoJ6_Tiles =: 3 : 0
   NB. given
-  coinsert <'layer2'
 
   NB. when
   'mineswpcon' lenable 'NotJ6'
 
   NB. then
-  assert (#Tiles) -: 13
-  assert Tiles -: ' 12345678**.?'
+  assert (#Tiles_mineswpcon_) -: 13
+  assert Tiles_mineswpcon_ -: ' 12345678**.?'
 )

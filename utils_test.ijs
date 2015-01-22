@@ -1,6 +1,5 @@
 before_all=: 3 : 0
   load jpath '~user/projects/coj/utils.ijs'
- smoutput coname''
   coinsert 'utils'
 )
 
@@ -29,7 +28,6 @@ test_copy_methods =: 3 : 0
   NB. then printB is still present there
   assert 'LocaleB' -: printB_LocaleB_ ''
 )
-
 
 test_replaceFakeParen =: 3 : 0
   assert 'abcd)efg' -: replaceFakeParen 'abcd).efg'
@@ -80,4 +78,27 @@ emn_output =: 'Tiles';'display'
 test_extractModifiedNames =: 3 : 0
   smoutput extractModifiedNames emn_input
   assert emn_output -: extractModifiedNames emn_input
+)
+
+
+test_fromLocale =: 3 : 0
+  base =. coname''
+  coerase 'LocaleA';'LocaleB'
+  coclass 'LocaleA'
+    name =: 'LocaleA'
+    printA =: 3 : '''LocaleA'''
+    printName =: 3 : 'name'
+    setName   =: 3 : 'name =: y'
+
+  coclass 'LocaleB'
+    name =: 'LocaleB'
+    printB =: 3 : '''LocaleB'''
+  cocurrent base
+
+  assert 'LocaleA' -: 'name' fromLocale 'LocaleA'
+  assert 'LocaleB' -: 'name' fromLocale 'LocaleB'
+
+  NB. fromLocale only works for nouns
+  NB. assert 'LocaleA' -: ('printA' fromLocale 'LocaleA') ''
+  NB. assert 'LocaleB' -: ('printB' fromLocale 'LocaleB') ''
 )

@@ -44,6 +44,7 @@ NB. mit cop
   ).
 )
 
+'mineswpcon' lenable 'Z'
 'mineswpcon' lenable 'NotJ6'
 
 NB. Methods

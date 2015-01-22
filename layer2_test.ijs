@@ -32,3 +32,37 @@ test_lname =: 3 : 0
 test_lnameShape =: 3 : 0
   assert ($>('Collection' lname_layer2_ 'Writeonly')) -: ,24
 )
+
+
+load jpath '~user/projects/coj/layer2.ijs'
+coinsert 'layer2'
+
+NB. describe the writeonly layer
+'Collection' lwhen 'Writeonly'
+  add =: 3 : '# items'
+  remove =: 3 : '# items'
+  destroy =: 3 : '0'
+)
+
+'Collection' lwhen 'Writeable'
+  add     =: 3 : '# items =: (< y) , items'
+  remove  =: 3 : '# items =: items -. < y'
+  destroy =: codestroy
+)
+
+test_lwhen_lwhenActivatedChanges =: 3 : 0
+  assert ('add';'remove';'destroy')-: lwhenActivatedChanges_CollectionLayerWriteonly_
+)
+
+test_lwhen_collectionWriteonly =: 3 : 0
+  cocurrent <'base'
+  'Collection' lenable 'Writeable'
+  assert 2 = #inspect__C1 ''
+  add__C1 'bar'
+  assert 3 = #inspect__C1 '' NB. modification
+  
+  'Collection' lenable 'Writeonly'
+  add__C1 'bar'
+  smoutput inspect__C1 ''
+  assert 3 = #inspect__C1 '' NB. no modification
+)

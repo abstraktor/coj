@@ -36,24 +36,38 @@ lwhen =: 3 : 0
   (>coname '') lwhen y
 :
   targetLocale =. x lname y
-  whenActivatedTxt__targetLocale =: replaceFakeParen noun define
+  lwhenActivatedTxt__targetLocale =: replaceFakeParen noun define
+  lwhenActivatedChanges__targetLocale =: extractModifiedNames lwhenActivatedTxt__targetLocale
+  NB. lwhenDeactivatedTxt__targetLocale =: 
 
   x lenable__targetLocale y
 )
 
-whenActivated_z_ =: 3 :'0!:100 whenActivatedTxt'
+lwhenActivated_z_ =: 3 :'0!:100 lwhenActivatedTxt'
 
-NB. enables layer _y_
+NB. enables layer _y_ in layer _x_
 lenable =: 3 : 0
   NB. monadic case falls back to current locale
   (>coname '') lenable y
 :
+  oldLocale =. coname''
   targetLocale =. x lname y
-  if. (type 'whenActivatedTxt__targetLocale') -: <'not defined' do.
-    smoutput 'error: whenActivatedTxt_', (>targetLocale),'_ is not defined'
+  if. (type 'lwhenActivatedTxt__targetLocale') -: <'not defined' do.
+    smoutput 'error: lwhenActivatedTxt_', (>targetLocale),'_ is not defined'
     return.
   end.
-  (0!:100) whenActivatedTxt__targetLocale
+
+  NB. apply callback to layer _x_
+  cocurrent <x
+  (0!:100) lwhenActivatedTxt__targetLocale
+  cocurrent oldLocale
+)
+
+ldisable =: 3 : 0
+  NB. monadic case falls back to current locale
+  (>coname '') lenable y
+:
+
 )
 
 ('layer2';'z') copath 'base'

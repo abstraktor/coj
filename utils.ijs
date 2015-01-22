@@ -2,6 +2,10 @@ cocurrent <'utils'
 
 ownProps =: 3 : ' nl__loc '''' [ loc =. <y'
 
+fromLocale =: dyad define
+  ". x,'_',y,'_'
+)
+
 bindTo =: 1 : 0
   cocurrent y
   ".u
@@ -21,7 +25,6 @@ copy_methods =: 4 : 0
   for_method. methods do.
     oldName =. (>method),'_',(>x),'_'
     newName =. (>method),'_',(>y),'_'
-    cocurrent x
     sentence =. newName,' =: ',oldName
     if. 0 < 4!:0 (<oldName) do.
       sentence =. sentence,' f.'
