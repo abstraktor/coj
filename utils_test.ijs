@@ -1,8 +1,11 @@
 before_all=: 3 : 0
   load jpath '~user/projects/coj/utils.ijs'
+ smoutput coname''
+  coinsert 'utils'
 )
 
 test_copy_methods =: 3 : 0
+  base =. coname''
   coerase 'LocaleA';'LocaleB'
   coclass 'LocaleA'
     name =: 'LocaleA'
@@ -13,13 +16,13 @@ test_copy_methods =: 3 : 0
   coclass 'LocaleB'
     name =: 'LocaleB'
     printB =: 3 : '''LocaleB'''
-  cocurrent <'base'
+  cocurrent base
 
   assert 'LocaleA' -: printA_LocaleA_ ''
   assert 'LocaleB' -: printB_LocaleB_ ''
 
   NB. when
-  (<'LocaleA') copy_methods_utils_ (<'LocaleB')
+  (<'LocaleA') copy_methods (<'LocaleB')
 
   NB. then it appeared in B
   assert 'LocaleA' -: printA_LocaleB_ ''
@@ -29,11 +32,11 @@ test_copy_methods =: 3 : 0
 
 
 test_replaceFakeParen =: 3 : 0
-  assert 'abcd)efg' -: replaceFakeParen_utils_ 'abcd).efg'
+  assert 'abcd)efg' -: replaceFakeParen 'abcd).efg'
 )
 
 test_replaceFakeParenOfNoString =: 3 : 0
-  assert '' -: replaceFakeParen_utils_ ''
+  assert '' -: replaceFakeParen ''
 )
 
 fp_multiRow_input =: noun define
@@ -59,5 +62,22 @@ done
 
 
 test_replaceFakeParenMultiRow =: 3 : 0
-  assert fp_multiRow_output -: replaceFakeParen_utils_ fp_multiRow_input
+  assert fp_multiRow_output -: replaceFakeParen fp_multiRow_input
+)
+
+
+emn_input =: noun define
+  NB. use viewmat
+  AddonPath=. jpath '~addons/games/minesweeper/'
+  Tiles =: ,((2 2 $ #) <;._3 ]) readimg AddonPath,'tiles26.png'
+  display =: monad define
+   hi''
+  ).
+)
+
+emn_output =: 'Tiles';'display'
+
+test_extractModifiedNames =: 3 : 0
+  smoutput extractModifiedNames emn_input
+  assert emn_output -: extractModifiedNames emn_input
 )

@@ -33,3 +33,7 @@ copy_methods =: 4 : 0
 NB. replaces ). in the given noun by )
 replaceFakeParen =: ] #~ (1&,@:-.@:(2 ').'&-: \ ]))`(]&'')@.((,0) -: $)
 
+load 'regex'
+NB. extracts the modified names out of a string of J code
+extractModifiedNames_regexp =: '([[:alpha:]][[:alnum:]_]*)[[:space:]]*=:'
+extractModifiedNames =: 1{"1 extractModifiedNames_regexp&(rxmatches rxfrom ])
