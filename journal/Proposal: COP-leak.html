@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2014-10-16 06:55:29 +0000"/><meta name="updated" content="2014-10-16 07:56:45 +0000"/><title>Proposal: COP-leak</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<b>Background</b>
+<div>A virtual machine provides hardware abstraction. Although pretty transparent, it leaks when looking at performance.</div>
+<div><br/></div>
+<div>Building a performance-optimized requires knowledge about the „outer“ environment of the language system and it’s own performance characteristics. After doing application-specific performance-optimizations such as removing unnecessary event bindings, developers start optimizing with respect to outer-language performance characteristics, such as Google Chrome JIT-ing only methods smaller than a maximum block size.</div>
+<div><br/></div>
+<div>Those environment-specific optimizations may be useless in different environments or even conflict between various products leading to tradeoffs between environment systems.</div>
+<div><br/></div>
+<div><b>Solution</b></div>
+<div>I use COP to enable programmers speeding up their applications with the awareness of how the code gets translated into processor instructions. The language runtime will enable or disable layers depending on the hardware and other virtualization layers it is running on.</div>
+<div><br/>
+It needs to be determined if the layers should be characterized by the name and version of the products involved or by the optimization features that are implemented in the environment. Furthermore, it is open which VM-layers those optimizations could depend on.</div>
+<div><br/></div>
+<div>In this seminar, I will (a) investigate into what outer characteristics<i style="font-weight: bold;"> </i>are used for such optimizations, (b) suggest useful layers based that and (c ) implement a performance optimization that illustrates the use of such layers.</div>
+<div><br/></div>
+<div><b>Impact</b></div>
+<div>With COP-leak, developers can write environment-optimized programs in a maintainable way without needing to decide between platforms.</div>
+</body></html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2014-11-04 14:24:29 +0000"/><meta name="updated" content="2015-01-02 00:44:31 +0000"/><title>functional COP in J</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div><b>Where is context in J?</b></div>
+<ul>
+<li>variables</li>
+<li>locales</li>
+<li>Fit to customize comparison tolerances, fill characters, print precision (<a href="http://www.jsoftware.com/help/dictionary/d411.htm">http://www.jsoftware.com/help/dictionary/d411.htm</a>)<br/></li>
+<li>Fix f.</li>
+<li>Self $:</li>
+<li>Roll ? (with <span style="font-family: monospace; background-color: rgb(255, 255, 255);">9!:0 and 9!:1)</span></li>
+</ul>
+<div><font face="monospace"><br/></font></div>
+<div><font face="monospace">Reads__D with(’Transactions’) 'from Products where UnitPrice&lt;10‘</font></div>
+<div><br/></div>
+<div><br/></div>
+<div><b>All uses of commit are implementations starting with a big letter wrapping the lowercase version of that function with a transaction</b></div>
+<div>
+<p>Insert=: 3 : 0</p>
+<div>insert y<br/></div>
+<div>commit’'</div>
+<div>dbwritetrans''</div>
+<p>)</p>
+</div>
+<div><br/></div>
+<div><b>Interesting is, that jdbtable will mixin the locale of it’s creator:</b></div>
+<div>
+<div>coinsert COCREATOR</div>
+<div><br/></div>
+</div>
+<div>
+<div>- jdb</div>
+<div>- jdbdatabase (ist ein jdb)</div>
+<div>- jdbfolder (ist ein jdb)</div>
+<div>- jdbtable (erbt von seinem erzeuger: jdbdatabase#opentables, oder jdbdatabase#Create), mehrmals geöffnet</div>
+</div>
+</body></html>

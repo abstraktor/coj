@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2015-01-01 23:59:22 +0000"/><meta name="updated" content="2015-01-04 16:34:33 +0000"/><title>COP Glossar</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<br/>
+<div><br/></div>
+<div><br/></div>
+<div><br/></div>
+<div>
+<table border="1" width="100%" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td valign="top">plain method definition<br/></td>
+<td valign="top">denotes a method whose
+<div>execution is not affected by layers</div>
+</td>
+</tr>
+<tr>
+<td valign="top">layered method definition<br/></td>
+<td valign="top">consists of a base method definition and at
+<div>least one partial method definition</div>
+</td>
+</tr>
+<tr>
+<td valign="top">base method definition<br/></td>
+<td valign="top">is executed when no active
+<div>layer provides a corresponding partial method</div>
+</td>
+</tr>
+<tr>
+<td valign="top">partial method definition</td>
+<td valign="top">A partial method definition
+<div>can proceed to a corresponding partial method in another</div>
+<div>active layer or, if such method does not exist, to the base</div>
+<div>method definition</div>
+</td>
+</tr>
+<tr>
+<td valign="top">class-in-layer<br/></td>
+<td valign="top">the layer is defined outside the lexical scope of the modules (e. g., classes) for which it provides behavioral variations</td>
+</tr>
+<tr>
+<td valign="top">layer-in-class<br/></td>
+<td valign="top">the declaration of a layer within the lexical scope of the module it augments</td>
+</tr>
+<tr>
+<td valign="top">Implementing Layer Activation: proxy objects<br/></td>
+<td valign="top">call-time lookup</td>
+</tr>
+<tr>
+<td valign="top"><br/></td>
+<td valign="top"><br/></td>
+</tr>
+<tr>
+<td valign="top"><br/></td>
+<td valign="top"><br/></td>
+</tr>
+<tr>
+<td valign="top"><br/></td>
+<td valign="top"><br/></td>
+</tr>
+</tbody>
+</table>
+<br/></div>
+<div>layers and their partial methods are</div>
+<div>accessed in the reverse order of their activation: the last</div>
+<div>activated layer is the first one of the proceed chain</div>
+<div><br/></div>
+<div><br/></div>
+<div><b>Layer Activation Strategies</b></div>
+<div>
+<ul>
+<li>global</li>
+<li>thread-based</li>
+<li>dynamic-extent based ((de)activate within a block)</li>
+<li><br/></li>
+</ul>
+</div>
+</body></html>

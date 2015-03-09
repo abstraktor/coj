@@ -1,0 +1,29 @@
+"Timestamp","Do you sometimes use those parts of J: locale system, package system, object system? ","Have you ever had to customize a package or locale? Which one? How did you do it?","Anything else that comes to your mind when thinking about modularity in J?","Did you ever want some verb or conjunction to change it's behavior depending on some ""outer"" context? Maybe you used @. (Agenda) for implementing different modi or feature switches. What did you do?"
+"2015/01/10 3:22:36 pm CET","yes. Note also that the object system and the locale system are basically the same system (more specifically the object system is a set of usage constraints on the locale system), while the package system includes quite a bit of additional code.","define ""customize"" please. Note especially that ""Context Oriented Programming"" needs considerable constraints to allow for debugging.
+
+With that in mind ""customize"" and ""coding"" seem to be the same thing.","Modularity is an abstraction which largely exists in the mind of the programmer and its existence is revealed by things the prorammer recognizes (such as documentation).
+
+Well written J allows ""equational modularity"" which is to say: you ca change the architecture and/or control flow and/or the data structures with minimal coding changes. Consider, for example http://rosettacode.org/wiki/Topological_sort#J where two implementations are presented. In the first, dependencies are represented using a boolean ""connection matrix"", while in the second dependencies are represented using ""numerical pointers"" (indices). Compare the code between them.
+
+(Other languages, such as Haskell might also offer this sort of fluidity, albeit with different tradeoffs, as well as a different programming culture.)","All non-constant code changes its behavior depending on its arguments.
+
+All code which uses multiple words changes its behavior depending on the definitions of those verbs.
+
+I have also built systems which use elaborate name/value pair systems with extensive support for complexities. These tend to become difficult for people to understand, and systems which use them tend to be mostly ignored and misunderstood, while at the same time somewhat satisfying potentially a large number of people.
+
+But nothing is ever perfect."
+"2015/01/10 4:51:41 pm CET","Python & J are the primary languages I use with object orientation.  Of these I am far more familiar and commonly use python classes to solve problems.  I use some of the start up loaded names which all depend on locales.  I also commonly use plot, viewmat and some of the math solvers.  Are these packages?
+
+To me the J package system means ""keep the system up to date"" which I do every few months.","I occasionally modify j packages when I find problems on my system.  I find the problematic .ijs file and modify it.  For instance, jd doesn't load.  So I bypass the pcre dynamic library test.  I've also looked at C source problems.  Back in j602 I was able to crash j using the sequential machine on non-literal data.  The problem was that the C code did not initialize itself.  However, I don't remember actually fixing the problem, nor did I know how to communicate changes back to the source.  No one owns the source now.  This is a big problem.
+
+Oh, I contributed the Runge Kutta solvers to math misc.","The separate name space and chained name spaces seem to be sufficient for modularity.","I'm quite pleased with Ken Iverson's choice against verb overloading (in the sense that to know an operator's action depends on the objects to which it applies, as it would with python or C++).
+
+I think many of us would like an evoke gerund (`:) option to evaluate verbs sequentially.  But now that I try to write it this doesn't really fit.
+x +`*`-`:2 y
+evaluates as
+x + * - y
+but not as x (+*-) y"
+"2015/01/11 6:24:07 pm CET","Locales","No","Verbs (functions) tend to be modular by nature if one avoids globals.  In tacit J, there are no named items, so there can't be globals.","I use agenda for a Mandelbrot set iterator like this:
+mandel2=: + *:`]@.(2: < |)""0
+
+This avoids performing the calculation on any point (""0) with a magnitude greater than 2 (2:<|) because a point like this is already large enough that further iterations will send it toward infinity, so there's no point in applying the expensive part of the calculation (+*:) - we just return the value untouched (])."

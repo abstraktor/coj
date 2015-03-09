@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2014-10-28 17:18:08 +0000"/><meta name="updated" content="2014-10-28 17:41:27 +0000"/><title>COJ KW42</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div>
+<div><b><br/></b></div>
+<div><b>Background</b><br/>
+Looking at COP performance, the present implementations differ in:<br/></div>
+<div>- layer activation speed</div>
+<div>- speed of calling instrumented methods</div>
+</div>
+<div><br/></div>
+<div><br/></div>
+<div><b>Roadmap</b></div>
+<ol>
+<li>build COJ with activation-time lookup</li>
+<li>extract transactions from jdb</li>
+<li>write data/importer and data/exporter that import/export within a single transaction instead of many (as before)</li>
+<li>evaluate speed-gain from disabling transactions</li>
+</ol>
+<div><br/></div>
+<div><b>A) Context-oriented Array Programming</b></div>
+<ol>
+<li>think of how to use COP for augmenting Verbs, Conjunctions and Nouns (other than methods)<br/></li>
+<li>implement a Context-oriented Array Programming example<br/></li>
+</ol>
+<div><br/></div>
+<div><b>B) Go on with the demo</b></div>
+<ol>
+<li>add sorting to jdb to enlarge speed gain (importing a sorted db disables sorting layer as well)</li>
+</ol>
+<div><b>C) Compare COP implementation methods</b></div>
+<ol>
+<li>build COJ with call-time lookup</li>
+<li>compare no-COP, activation-time COP and call-time COP</li>
+</ol>
+<div><br/></div>
+</body></html>

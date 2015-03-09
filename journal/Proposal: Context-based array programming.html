@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2014-10-14 21:39:46 +0000"/><meta name="updated" content="2014-10-16 17:10:43 +0000"/><title>Proposal: Context-based array programming</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div><b style="font-size: 18px;">Background</b><br/></div>
+<div>Array Programming ermöglicht das präzise Manipulieren multidimensionaler Daten. Ingenieure schreiben darin Skripte, um wegleitende Erkenntnisse aus z.B. sensorischen oder statistischen Daten zu gewinnen.</div>
+<div><br/></div>
+<div>In der Array-Programming-Sprache J gibt es Namensräume („locales“). Diese helfen Namenskollisionen zu vermeiden, bieten einen Gültigkeitsbereich für lokale Variablen und haben einen lookup-Mechanismus, der das Nachschlagen von globalen Variablen ermöglicht. Das Verhalten des lookup-Mechanismus wird durch eine Liste von Namensräumen bestimmt („lookup-Pfad“). Bei Benutzung einer nicht definierten Variablen wird transparent der Reihe nach versucht, diesen Namen in einem der Namensräume im lookup-Pfad aufzulösen und bei Erfolg dieser Wert zurückgegeben. Das funktioniert für Operanden („Nomen“), benannte Operatoren („Verben“) und benannte Funktionen höherer Ordnung („Adverbien“ und „Konjunktionen“).</div>
+<div>Der lookup-Mechanismus wird in J benutzt um prototypbasierte Objekt-Orientierung zu implementieren. Die Standardbibliothek („stdlib.ijs“) implementiert dafür u.a. die Hilfsmethoden „coclass“, „coinsert“, „conew“.</div>
+<div>„coclass 'Collection'“ erzeugt einen neuen Namensraum ‚Collection' und wählt in als aktuell aus.</div>
+<div>„coinsert ‚AbstractClass'“ hängt den Namensraum ‚AbstractClass‘ vorne an den lookup-Pfad vom aktuellen Namensraum. „Collection“ ist nun eine Unterklasse von „AbstractClass“.</div>
+<div>„conew ‚Collection‘“ erzeugt einen neuen (namenlosen) Namensraum und nimmt ‚Collection‘ in den lookup-Pfad auf.</div>
+<div><br/></div>
+<div>Um in J zwischen Kontexten zu differenzieren werden bisher Verzweigungen benutzt. Zum Beispiel wird in trace.ijs abhängig vom Modus-Parameter („t_mode“) entweder die „execute“-Funktion für das Nachverfolgen („Trace“) oder Klammern („Parenthesis“) benutzt:</div>
+<div><br/></div>
+<div>trace.ijs, Zeile 185</div>
+<div> if. 'trace' -: t_mode do.</div>
+<div>  execute=. executet</div>
+<div>  move   =. movet</div>
+<div> else.</div>
+<div>  execute=. executep</div>
+<div>  move   =. movep</div>
+<div> end.</div>
+<div><br/></div>
+<div>
+<div><span style="font-size: 18px;"><b>Impact</b></span></div>
+<div>
+<div>Interessante Kontexte beim Array Programming sind:</div>
+<div>- aktuelle Datenbank (Verschiedene Eingabeformate: Rang, Boxen, Kopfzeilen, Namen)</div>
+<div>- aktuelle Aufgabe (Entdecken, Debuggen, Analysieren, Präsentieren)</div>
+<div>- aktueller Nutzer (Expertise, Unternehmens-Rolle oder Disziplin)</div>
+<div><br/></div>
+<div>Durch layern der Bibliotheksfunktionen lassen sie sich auf die beschriebenen Kontext optimieren. Mögliche dynamische Anpassungen sind dabei:</div>
+<div>- die Ausführlichkeit bei der Ausgabe von Zwischenergebnissen</div>
+<div><b>- die Genauigkeit bei der Verarbeitung großer Datenmengen (Algorithmus-Entwurf auf kleiner Datenmenge, Analyse auf den vollständigen Daten)</b></div>
+</div>
+</div>
+<div>- das „Einfrieren“ von Zuständen, um Zwischenergebnisse von Operationen zu sehen, ohne den Zustand des Terminals zu verändern</div>
+<div><b>- Anpassen des Rangs von bestimmten Operationen, um von der Analyse eines Datensatzes zur Analyse einer ganzen Tabelle überzugehen</b></div>
+<div><br/></div>
+<div>Mit Context-based Array Programming lassen sich Bibliotheksfunktionen auf die verschiedenen Entwicklungsstufen eines J Skripts optimieren. Ein COP-Paket, welches dies ermöglicht und entsprechende Optimierungen vornimmt kann die Arbeit mit J erheblich komfortabler, effizienter und wartbarer machen.</div>
+<div>
+<div><span style="font-size: 18px;"><b><br/>
+Solution</b></span></div>
+<div>Fast alle Skripte in der J Standard-Umgebung sind innerhalb eines Namensraums formuliert. Wenn es nicht explizit angegeben ist, so ist der aktuelle Namensraum ‚base‘ und ‚z‘ der einzige Namensraum im lookup-Pfad.</div>
+<div><br/></div>
+<div>J bietet genügend Reflektion, um COP zu implementieren. Es lassen sich Methoden aus einem speziellen Namensraum im Variablenbereich eines anderen ausführen sowie die Methoden eines Namensraums auflisten und verändern.</div>
+<div><br/></div>
+<div>In diesem Seminar werde ich COP in J implementieren und ein Layer auf mehrere Standard-Module implementieren. Dabei werde ich ermitteln, wie die vorgeschlagenen dynamischen Anpassungen den Arbeitsfluss beim Array Programming verändern und den Nutzen der Optimierung auf diese Kontexte prüfen.</div>
+</div>
+<div><br/></div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>Proof of Concept</b></span></div>
+<div>Dies sind Screenshots von einer Proof-of-Concept-Implementierung vom „Einfrieren“ einer Collection, welche die beschriebenen Möglichkeiten zwar illustriert, aber nicht produktiv benutzbar ist, da sie (i) Vererbungshierarchien zerstört, (ii) Bezeichner hart kodiert sind (anstelle von Schleifen) und (iii) eine unausgereifte API verwendet (z.B. fehlt die Konjunktion „withLayer“).</div>
+<div><br/></div>
+<div><b>Hilfe zur Unterstrich Notation:</b></div>
+<div>Sei „obj“ ein Objekt der Klasse „Class“.</div>
+<div>"Method__obj 0“ ist equivalent zur „Method_8_ 0“ wobei 8 die id von obj ist. „Method_8_“ ist nicht definiert, aber „Method_Class_“ kann aufgelöst werden und so wird die Methode „Method“ auf dem Object „obj“ ausgeführt.</div>
+<div><br/></div>
+<div><span><span><img src="Proposal%3A%20Context-based%20array%20programming.resources/Bildschirmfoto%202014-10-15%20um%2010.39.08.png" height="144" width="463"/></span><br/>
+<img src="Proposal%3A%20Context-based%20array%20programming.resources/Bildschirmfoto%202014-10-15%20um%2010.38.18.png" height="323" width="458"/><br/>
+<img src="Proposal%3A%20Context-based%20array%20programming.resources/Bildschirmfoto%202014-10-15%20um%2010.38.33.png" height="146" width="450"/><br/>
+<img src="Proposal%3A%20Context-based%20array%20programming.resources/Bildschirmfoto%202014-10-15%20um%2010.38.42.png" height="365" width="446"/></span><br/></div>
+<div><span><br/></span></div>
+<div><span><span><img src="Proposal%3A%20Context-based%20array%20programming.resources/Bildschirmfoto%202014-10-15%20um%2011.06.50.png" height="782" width="656"/></span><br/></span></div>
+<div><span><br/></span></div>
+<div><span style="font-size: 18px;"><b>Sources</b></span></div>
+<div><a href="http://www.jsoftware.com/help/learning/25.htm">http://www.jsoftware.com/help/learning/24.htm</a><br/></div>
+<div><a href="http://www.jsoftware.com/help/learning/25.htm">http://www.jsoftware.com/help/learning/25.htm</a><span><br/></span></div>
+<div><a href="http://www.jsoftware.com/help/dictionary/dx018.htm">http://www.jsoftware.com/help/dictionary/dx018.htm</a><br/></div>
+<div><a href="https://hpi.de/studium/lehrveranstaltungen/it-systems-engineering/lehrveranstaltung/course/2014/kontextorientiertes_programmieren.html">https://hpi.de/studium/lehrveranstaltungen/it-systems-engineering/lehrveranstaltung/course/2014/kontextorientiertes_programmieren.html</a><br/></div>
+</body></html>

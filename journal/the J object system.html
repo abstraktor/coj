@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2014-11-18 14:39:17 +0000"/><meta name="updated" content="2015-01-02 00:36:08 +0000"/><title>the J object system</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div>on object creation (<i>conew</i>), the following things happen:</div>
+<div>
+<ol>
+<li>a new numbered locale is created</li>
+<li><i>y</i> is inserted into it’s lookup path</li>
+<li>COCREATOR in it is set to reference the creating locale</li>
+</ol>
+<div><br/></div>
+</div>
+<div><b>Designing activation-time lookup</b></div>
+<div>When enabling or disabling a layer in a activation-time lookup implementation, we need to change the method that is called.</div>
+<div>
+<ol>
+<li>lookup path of all classes is updated</li>
+<li>lookup path of all objects is updated</li>
+</ol>
+<div>Although this is an expensive operation (linear to number of objects and classes), it can be parallelized and could perform in almost O(1) for less objects than cores. In interpreters like Truffle-J on a many-core machine, programs with few objects will not suffer from significant speed loss.</div>
+</div>
+<div><br/></div>
+<div><b>Designing</b><b> call-time lookup</b></div>
+<div>When doing call-time lookup, we hold a list of activated contexts. When calling a method in an instrumented layer, we scan through that list, </div>
+<div><br/></div>
+<div><b>Implementation</b></div>
+<div>When layering a class the first time, it’s methods are copied into a new base-locale that is inserted into the lookup path. the original class receives </div>
+<div><br/></div>
+<div><b>Encapsulation: access to private methods?</b></div>
+<div><b>Global Layer Activation in a parallel environment?</b></div>
+</body></html>

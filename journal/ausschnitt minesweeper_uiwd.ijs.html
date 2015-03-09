@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2015-01-11 09:02:23 +0000"/><meta name="updated" content="2015-01-11 09:02:41 +0000"/><title>ausschnitt minesweeper/uiwd.ijs</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+MinesweeperWd_z_=: 3 : 0
+<div>a=. conew 'mineswpwd'</div>
+<div>BSIZE__a=: y</div>
+<div>create__a`start_droidwd__a@.(('Android'-:UNAME)&gt;IFQT) a</div>
+<div>)</div>
+<div><br/></div>
+<div>3 : 0''</div>
+<div>  if. IFJ6 do.</div>
+<div>    require 'media/platimg gl2'</div>
+<div>    require 'games/minesweeper/minefield'</div>
+<div>    coclass 'mineswpwd'</div>
+<div>    coinsert 'mineswp';'pplatimg';'jgl2'</div>
+<div><br/></div>
+<div>    AddonPath=. jpath '~addons/games/minesweeper/'</div>
+<div>NB. Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg AddonPath,'tiles18.png'</div>
+<div>    Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg AddonPath,'tiles26.png'</div>
+<div>  else.</div>
+<div>    require 'droidwd gtkwd'</div>
+<div>    require 'games/minesweeper/minefield'</div>
+<div>    coclass 'mineswpwd'</div>
+<div>    coinsert 'mineswp jgl2 wdbase'</div>
+<div>    droidwd_run=: create</div>
+<div><br/></div>
+<div>    AddonPath=. jpath '~addons/games/minesweeper/'</div>
+<div>    if. IFQT do.</div>
+<div>      mswd_isifld_mbldbl=: mswd_isifld_mbrup  NB. android does not have right click</div>
+<div><br/></div>
+<div>NB.   Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg_jqtide_ AddonPath,'tiles18.png'</div>
+<div>      Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg_jqtide_ AddonPath,'tiles26.png'</div>
+<div>    elseif. 'Android'-:UNAME do.</div>
+<div>      mswd_isifld_mbldbl=: mswd_isifld_mbrup  NB. android does not have right click</div>
+<div><br/></div>
+<div>NB.   Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg_ja_ AddonPath,'tiles18.png'</div>
+<div>      Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg_ja_ AddonPath,'tiles26.png'</div>
+<div>    elseif. do.</div>
+<div>NB.   Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg_jgtk_ AddonPath,'tiles18.png'</div>
+<div>      Tiles=: ,((2 2 $ #) &lt;;._3 ]) readimg_jgtk_ AddonPath,'tiles26.png'</div>
+<div>    end.</div>
+<div>  end.</div>
+<div>  ''</div>
+<div>)</div>
+</body></html>

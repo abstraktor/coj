@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2015-01-13 08:38:14 +0000"/><meta name="updated" content="2015-01-13 08:58:20 +0000"/><title>Survey Results</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div><b>Memorable Quotes</b></div>
+<div>
+<ul>
+<li>Python &amp; J are the primary languages I use with object orientation.<br/></li>
+<li>Note especially that "Context Oriented Programming" needs considerable constraints to allow for debugging. With that in mind "customize" and "coding" seem to be the same thing.</li>
+<li>I have also built systems which use elaborate <b>name/value pair systems</b> with extensive support for complexities. These tend to become difficult for people to understand, and systems which use them tend to be mostly ignored and misunderstood, while at the same time somewhat satisfying potentially a large number of people.<br/></li>
+<li>I'm quite pleased with Ken Iverson's choice against verb overloading</li>
+<li>I <b>use agenda</b> for a Mandelbrot set iterator like this: mandel2=: + *:`]@.(2: &lt; |)“0 This avoids performing the calculation on any point ("0) with a magnitude greater than 2 (2:&lt;|) because a point like this is already large enough that further iterations will send it toward infinity, so there's no point in applying the expensive part of the calculation (+*:) - we just return the value untouched (]).<br/></li>
+</ul>
+</div>
+<b>Surprises</b>
+<div>
+<ul>
+<li>For instance, jd doesn't load. So I bypass the pcre dynamic library test. I've also looked at C source problems.<br/></li>
+<li>I think many of us would like an evoke gerund (`:) option to evaluate verbs sequentially. But now that I try to write it this doesn't really fit. x +`*`-`:2 y evaluates as x + * - y but not as x (+*-) y</li>
+<li>I also commonly use plot, viewmat and some of the math solvers. Are these packages?<i><br/></i></li>
+<li><i>Respondents use locales and the object system</i></li>
+<li><i>Respondents seldomly use the package system</i></li>
+</ul>
+<div><b><br/></b></div>
+<div><b>Contradictions and Questions</b><br/>
+<ul>
+<li>All code which uses multiple words changes its behavior depending on the definitions of those verbs.<br/></li>
+<li>How representative is those results?</li>
+</ul>
+</div>
+<div><span style="font-weight: bold;"><br/></span></div>
+<div><span style="font-weight: bold;">Ideas</span></div>
+<div>
+<ul>
+<li>Well written J allows "equational modularity" which is to say: you ca change the architecture and/or control flow and/or the data structures with minimal coding changes.</li>
+<li>Consider <span style="font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: 22.1000003814697px; background-color: rgb(231, 231, 231);"><a href="http://rosettacode.org/wiki/Topological_sort#J">http://rosettacode.org/wiki/Topological_sort#J</a></span></li>
+<li><i>Tacit J is modular: </i>Verbs (functions) tend to be modular by nature if one avoids globals. In <b>tacit J</b>, there are no named items, so there can't be globals.</li>
+<li>an operator's action depends on <b>the objects to which it applies</b><br/></li>
+</ul>
+</div>
+</div>
+</body></html>

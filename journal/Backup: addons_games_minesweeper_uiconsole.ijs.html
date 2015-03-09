@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="author" content="Bastian Kruck"/><meta name="created" content="2015-01-08 09:41:26 +0000"/><meta name="updated" content="2015-01-08 09:41:44 +0000"/><title>Backup: addons/games/minesweeper/uiconsole.ijs</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<p>NB. Console user interface for Minesweeper game</p>
+<p>NB. Should work in all J front ends.</p>
+<p>NB. Viewing the Minefield using viewmat currently only works on J6</p>
+<p><br/></p>
+<p>Note 'Example commands to run'</p>
+<p>  fld=: MinesweeperCon ''</p>
+<p>  fld=: MinesweeperCon 6 10     NB. 6 rows, 10 cols</p>
+<p>)</p>
+<p>MinesweeperCon_z_=: conew&amp;'mineswpcon'</p>
+<p><br/></p>
+<p>require 'games/minesweeper/minefield'</p>
+<p>coclass 'mineswpcon'</p>
+<p>coinsert 'mineswp'</p>
+<p><br/></p>
+<p>AddonPath=. jpath '~addons/games/minesweeper/'</p>
+<p>TilesG26=: ''                                                       NB. dummy variable</p>
+<p>NB.TilesG26=: ,((2 2 $ #) &lt;;._3 ]) readimg AddonPath,'tiles26.png'  NB. can uncomment on J6</p>
+<p>TilesA=: ' 12345678**.?'</p>
+<p>TextDisplay=: 0                  NB. set to zero to display minefield using viewmat</p>
+<p><br/></p>
+<p>NB. Methods</p>
+<p>NB. =========================================================</p>
+<p><br/></p>
+<p>create=: 3 : 0</p>
+<p>  smoutput Instructions</p>
+<p>  mscon_startnew y</p>
+<p>)</p>
+<p>destroy=: codestroy</p>
+<p>quit=: destroy</p>
+<p><br/></p>
+<p>mscon_startnew=: mscon_update@newMinefield</p>
+<p><br/></p>
+<p>mscon_update=: 3 : 0</p>
+<p>  'isend msg'=. eval ''</p>
+<p>  IsEnd=: isend</p>
+<p>  smoutput msg</p>
+<p>  tiles=. TextDisplay{:: TilesG26;TilesA</p>
+<p>  display tiles showField isend</p>
+<p>  if. isend do.</p>
+<p>    msg=. ('K'={.msg) {:: 'won';'lost'</p>
+<p>    smoutput 'You ',msg,'! Try again?'</p>
+<p>    destroy ''</p>
+<p>  end.</p>
+<p>  empty''</p>
+<p>)</p>
+<p><br/></p>
+<p>clear=: mscon_update@clearTiles@|.</p>
+<p>mark=: mscon_update@markTiles@|.</p>
+<p><br/></p>
+<p>display=: 3 : 0</p>
+<p>  if. TextDisplay do.</p>
+<p>    smoutput@&lt; y</p>
+<p>  else.</p>
+<p>    closeall_jviewmat_ :: ] ''</p>
+<p>    ([: viewrgb@; ,.&amp;.&gt;/"1) y</p>
+<p>  end.</p>
+<p>  empty''</p>
+<p>)</p>
+<p><br/></p>
+<p>NB. Text Nouns</p>
+<p>NB. =========================================================</p>
+<p><br/></p>
+<p>Instructions=: 0 : 0</p>
+<p>=== MineSweeper ===</p>
+<p>Object:</p>
+<p>   Uncover (clear) all the tiles that are not mines.</p>
+<p><br/></p>
+<p>How to play:</p>
+<p>- the left, top tile is: 1 1</p>
+<p>- clear an uncleared tile (.) using the command:</p>
+<p>      clear__fld &lt;row index&gt; &lt;column index&gt;</p>
+<p>- mark and uncleared tile (?) as a suspected mine using the command:</p>
+<p>      mark__fld &lt;row index&gt; &lt;column index&gt;</p>
+<p>- if you uncover a number, that is the number of mines adjacent</p>
+<p>   to the tile</p>
+<p>- if you uncover a mine (*) the game ends (you lose)</p>
+<p>- if you uncover all tiles that are not mines the game ends (you win).</p>
+<p>- quit a game before winning or losing using the command:</p>
+<p>      quit__fld ''</p>
+<p>- start a new game using the command:</p>
+<p>      fld=: MinesweeperCon &lt;num rows&gt; &lt;num columns&gt;</p>
+<p>)</p>
+<p><br/></p>
+<p>NB. Auto-run UI</p>
+<p>NB. =========================================================</p>
+<p>cocurrent 'base'</p>
+<p>fld=: MinesweeperCon ''</p>
+<p><br/></p>
+</body></html>

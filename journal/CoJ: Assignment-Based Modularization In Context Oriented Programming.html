@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="created" content="2015-02-03 07:39:33 +0000"/><meta name="latitude" content="52.4038"/><meta name="longitude" content="13.1"/><meta name="source" content="mobile.android"/><meta name="updated" content="2015-03-06 07:16:43 +0000"/><title>CoJ: Assignment-Based Modularization In Context Oriented Programming</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div>I present a framework for changing the behavior of a J program without loosing the overridden behavior.</div>
+<div><br/></div>
+<div>Users are able to describe layers of functionality by refining some assignments and then running the original algorithm with the modified code.</div>
+<div><br/></div>
+<div>Object-oriented programs as well as few-architectured scribbles can facilitate that in a similar way.</div>
+<div><br/></div>
+<div><br/></div>
+<div><b>Motivation</b></div>
+<div>We found authors of object-oriented J programs using comments, booleans or immediate functions to enable or disable particular features of the program. With CoJ, we suggest a unified, semantic, well-readable way of formulating feature switches. Furthermore changing a feature switch at runtime becomes feasible and visible.</div>
+<div><br/></div>
+<div>Small scribbles can take advantage of layering when trying alternatives. Authors can use a new layer to start an experiment with alternating data or the algorithm the scribble runs with. When working this way, duplicating code to start a thinking branch can be avoided and a denser, more readable working style of ideation becomes possible.</div>
+<div><br/></div>
+<div><img src="CoJ%3A%20Assignment-Based%20Modularization%20In%20Context%20Oriented%20Programming.resources/Bildschirmfoto%202015-03-06%20um%2007.54.15.png" height="267" width="735"/><br/></div>
+<div>
+<div><b><br/></b></div>
+</div>
+<div>
+<div><b><br/></b></div>
+</div>
+<div>
+<div><b>Survey</b></div>
+<div><b>￼</b></div>
+<div>“Well written J allows "equational modularity" which is to say: you can change the architecture and/or control flow and/or the data structures with minimal coding changes.”</div>
+<div><b><br/></b></div>
+<div>“Verbs (functions) tend to be modular by nature if one avoids globals. In tacit J, there are no named items, so there can't be globals.”</div>
+<div><br/></div>
+</div>
+<div>“I also commonly use plot, viewmat and some of the math solvers. Are these packages?”</div>
+<div><br/></div>
+<div><b><br/></b></div>
+<div><b>Framework Design</b></div>
+<div>Assignments as overridden unit</div>
+<div><br/></div>
+<div>Resolving dependencies with rerunning the layered code</div>
+<div><br/></div>
+<div>Finding A Syntax: Allowing multiline definitions</div>
+<div><br/></div>
+<div><b><br/></b></div>
+<div><b>Implementation State</b></div>
+<div><br/></div>
+<div>
+<div><br/></div>
+</div>
+<div><br/></div>
+<div><br/></div>
+<div><b>Sources</b></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://swatouch.hpi.uni-potsdam.de/demo.html#workspaces/77f926b9627ebb7b1ab5527f35016205">http://swatouch.hpi.uni-potsdam.de/demo.html#workspaces/77f926b9627ebb7b1ab5527f35016205</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.jsoftware.com/help/dictionary/d120.htm">http://www.jsoftware.com/help/dictionary/d120.htm</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'ArialMT'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.hpi.uni-potsdam">http://www.hpi.uni-potsdam</a>.</span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'ArialMT'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.jsoftware.com/help/learning/24.htm">http://www.jsoftware.com/help/learning/24.htm</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'ArialMT'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.jsoftware.com/help/learning/25.htm">http://www.jsoftware.com/help/learning/25.htm</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'ArialMT'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.jsoftware.com/help/dictionary/dx018.htm">http://www.jsoftware.com/help/dictionary/dx018.htm</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'ArialMT'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="https://hpi.de/studium/lehrveranstaltungen/it-systems-engineering/lehrveranstaltung/course/2014/kontextorientiertes_programmieren">https://hpi.de/studium/lehrveranstaltungen/it-systems-engineering/lehrveranstaltung/course/2014/kontextorientiertes_programmieren.html</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://en.wikipedia.org/wiki/J_%28programming_language%29">http://en.wikipedia.org/wiki/J_%28programming_language%29</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.hpi.uni-potsdam.de/hirschfeld/cop/implementations/index.html">http://www.hpi.uni-potsdam.de/hirschfeld/cop/implementations/index.html</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'"><a href="http://www.jsoftware.com/jwiki/Addons/games/minesweeper">http://www.jsoftware.com/jwiki/Addons/games/minesweeper</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://draw.io">http://draw.io</a></span> <span style="font-size: 10.000000pt; font-family: 'Raleway'">for diagrams</span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.jsoftware.com/help/jforc/control_structures.htm">http://www.jsoftware.com/help/jforc/control_structures.htm</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'; color: rgb(0.000000%, 47.843137%, 61.960787%)"><a href="http://www.jsoftware.com/help/dictionary/d001.htm">http://www.jsoftware.com/help/dictionary/d001.htm</a></span></div>
+<div><span style="font-size: 10.000000pt; font-family: 'Raleway'"><a href="http://www.jsoftware.com/jwiki/Vocabulary/fdot">http://www.jsoftware.com/jwiki/Vocabulary/fdot</a></span></div>
+<div><br/></div>
+<ul style="list-style-type: none"/>
+<div><b><br/></b></div>
+</body></html>
