@@ -63,6 +63,5 @@ test_lwhen_collectionWriteonly =: 3 : 0
   
   'Collection' lenable 'Writeonly'
   add__C1 'bar'
-  smoutput inspect__C1 ''
   assert 3 = #inspect__C1 '' NB. no modification
 )

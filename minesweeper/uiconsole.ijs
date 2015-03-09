@@ -17,8 +17,8 @@ coinsert 'mineswp'
 
 
 AddonPath=. jpath '~addons/games/minesweeper/'
-NB.TilesG26=: ''                                                       NB. dummy variable
-TilesG26=: ,((2 2 $ #) <;._3 ]) readimg AddonPath,'tiles26.png'  NB. can uncomment on J6
+NB.TilesG26=: ''   NB. dummy variable
+TilesG26=: ,((2 2 $ #) <;._3 ]) readimg AddonPath,'tiles26.png' NB. can uncomment on J6
 TilesA=: ' 12345678**.?'
 TextDisplay=: 0                  NB. set to zero to display minefield using viewmat
 

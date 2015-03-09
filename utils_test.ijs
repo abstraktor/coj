@@ -76,7 +76,6 @@ emn_input =: noun define
 emn_output =: 'Tiles';'display'
 
 test_extractModifiedNames =: 3 : 0
-  smoutput extractModifiedNames emn_input
   assert emn_output -: extractModifiedNames emn_input
 )
 

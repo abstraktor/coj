@@ -37,9 +37,9 @@ lwhen =: 3 : 0
 :
   targetLocale =. x lname y
   lwhenActivatedTxt__targetLocale =: replaceFakeParen noun define
-  lwhenActivatedChanges__targetLocale =: extractModifiedNames lwhenActivatedTxt__targetLocale
-  NB. lwhenDeactivatedTxt__targetLocale =: 
+  lwhenActivatedChanges__targetLocale =: extractModifiedNames lwhenActivatedTxt__targetLocale 
 
+  NB. initialize in the layer locale to allow proceeding by explicitly calling the layer
   x lenable__targetLocale y
 )
 
@@ -57,7 +57,7 @@ lenable =: 3 : 0
     return.
   end.
 
-  NB. apply callback to layer _x_
+  NB. apply callback to layer x
   cocurrent <x
   (0!:100) lwhenActivatedTxt__targetLocale
   cocurrent oldLocale
@@ -67,7 +67,8 @@ ldisable =: 3 : 0
   NB. monadic case falls back to current locale
   (>coname '') lenable y
 :
-
+  NB. TBD
+  NB. lwhenActivatedChanges__targetLocale extractModifiers (x lname 'Z')
 )
 
 ('layer2';'z') copath 'base'

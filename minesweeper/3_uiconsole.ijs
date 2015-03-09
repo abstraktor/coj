@@ -15,9 +15,9 @@ load jpath '~user/projects/coj/layer2.ijs'
 require 'games/minesweeper/minefield'
 coclass 'mineswpcon'
 coinsert 'mineswp'
-coinsert 'layer2'
+coinsert 'coj'
 
-NB. mit cop
+NB. describe mineswpcon when we are in J6
 'mineswpcon' lwhen 'J6'
   NB. use viewmat
   AddonPath=. jpath '~addons/games/minesweeper/'
@@ -30,14 +30,17 @@ NB. mit cop
   ).
 )
 
+NB. describe mineswpcon when we are not in J6
 'mineswpcon' lwhen 'NotJ6'
   Tiles =: ' 12345678**.?'
+  NB. asdf.
   display =: monad define
     smoutput@< y
     display_mineswpconLayerZ_ ''
   ).
 )
 
+NB. describe mineswpcon shared layer
 'mineswpcon' lwhen 'Z'
   display=: monad define
     empty''
