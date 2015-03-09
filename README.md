@@ -8,6 +8,8 @@ This work was done by Bastian Kruck as part of the COP seminar at HPI in winter 
 - build in userland without VM modifications
 - state: prototype
 - with COJ, you can replace immediate functions and smelling constructs with semantically structured code
+ 
+![No more immediate functions, No more uncomment-comment-flag constructs, semantically structured code](Summary_graphics.png)
 
 # Folders
 - proposal1: seminar proposal on COJ
